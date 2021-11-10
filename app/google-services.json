@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "931378837285",
+    "project_id": "noodel-76f54",
+    "storage_bucket": "noodel-76f54.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:931378837285:android:c1772a1a50511ec2094ccc",
+        "android_client_info": {
+          "package_name": "com.example.myloginapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "931378837285-ajgk208ov9flq573bc616m3pgldlusde.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhJo6mHW6MjGwJC00aVukqj2KXX3o5VLY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "931378837285-ajgk208ov9flq573bc616m3pgldlusde.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
