@@ -16,14 +16,14 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.io.File;
+
 
 public class MainActivity2 extends AppCompatActivity {
 
 ImageView imageView;
 Button button;
 
-FirebaseStorage firebaseStorage ;
-StorageReference storageReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,34 +32,35 @@ StorageReference storageReference;
         imageView=(ImageView) findViewById(R.id.imageView2);
         button=(Button)findViewById(R.id.button);
 
-        firebaseStorage = FirebaseStorage.getInstance();
-        storageReference  = firebaseStorage.getReference();
+
 
         button.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            downloadViaUrl();
+
+
+            /*downloadViaUrl();*/
+            StorageReference imageRef=FirebaseStorage.getInstance().getReference().child("images/opencv75.png");
+
+
+            Glide.with(MainActivity2.this)/* API*/
+                    .load(imageRef)
+                    .error(R.drawable.ic_launcher_background)
+                    .into(imageView);
         }
         });
     }
 
-    public void downloadViaUrl(){
-        StorageReference imageRef=storageReference.child("images/téléchargement.jpg");
-        imageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
+    /*public void downloadViaUrl(){
+
+        StorageReference imageRef=FirebaseStorage.getInstance().getReference().child("images/opencv75.png");
+
+
                 Glide.with(MainActivity2.this)/* API*/
-                        .load(uri)
-                        .error(R.drawable.ic_launcher_background)
-                        .into(imageView);
+                       /* .load(imageRef)*/
+                       /* .error(R.drawable.ic_launcher_background)*/
+                     /*   .into(imageView);*/
 
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-
-            }
-        });
-    }
+    /*}*/
 
 }
