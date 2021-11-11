@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 
@@ -24,6 +25,11 @@ public class MainActivity2 extends AppCompatActivity {
 ImageView imageView;
 Button button;
 
+FirebaseStorage firebaseStorage ;
+StorageReference storageReference;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,30 +43,22 @@ Button button;
         button.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
-
-            /*downloadViaUrl();*/
-            StorageReference imageRef=FirebaseStorage.getInstance().getReference().child("images/opencv75.png");
-
-
-            Glide.with(MainActivity2.this)/* API*/
-                    .load(imageRef)
-                    .error(R.drawable.ic_launcher_background)
-                    .into(imageView);
+            downloadViaUrl();
         }
         });
     }
 
-    /*public void downloadViaUrl(){
+    public void downloadViaUrl(){
+        ImageView imageView = findViewById(R.id.imageView2);
 
-        StorageReference imageRef=FirebaseStorage.getInstance().getReference().child("images/opencv75.png");
+        StorageReference imageRef=FirebaseStorage.getInstance().getReference().child("opencv75.png");
+
+        System.out.println("------------------------------------------------ ");
+        System.out.println(imageRef);
+        System.out.println("------------------------------------------------");
+        Glide.with(MainActivity2.this).load(imageRef).error(R.drawable.ic_launcher_background).into(imageView);
 
 
-                Glide.with(MainActivity2.this)/* API*/
-                       /* .load(imageRef)*/
-                       /* .error(R.drawable.ic_launcher_background)*/
-                     /*   .into(imageView);*/
-
-    /*}*/
+    }
 
 }
