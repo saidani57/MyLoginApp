@@ -48,17 +48,25 @@ StorageReference storageReference;
         });
     }
 
-    public void downloadViaUrl(){
-        ImageView imageView = findViewById(R.id.imageView2);
+        public void downloadViaUrl(){
 
-        StorageReference imageRef=FirebaseStorage.getInstance().getReference().child("opencv75.png");
 
-        System.out.println("------------------------------------------------ ");
-        System.out.println(imageRef);
-        System.out.println("------------------------------------------------");
-        Glide.with(MainActivity2.this).load(imageRef).error(R.drawable.ic_launcher_background).into(imageView);
+            StorageReference imageRef=FirebaseStorage.getInstance().getReference().child("opencv75.png");
+            imageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    Glide.with(MainActivity2.this).load(uri).error(R.drawable.ic_launcher_background).into(imageView);
 
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+
+                }
+            });
+        }
 
     }
 
-}
+
+
